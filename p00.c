@@ -36,23 +36,12 @@ void myprint(char* str1, char* str2) {
 }
 
 int getEntry(void) {
+    sem_wait(&(mymap -> mutex));
     int entry = -1;
-    // get an entry number
-    int cntEntry;
-    cntEntry = mymap->entry;
-    usrinfo listOfUser[MAXPROGS+1];
-    memcpy(listOfUser, mymap->progs, sizeof(listOfUser));
-  	for (int j = 0; j < cntEntry; j++) {
-      	if (listOfUser[j].akun[0] != '\0') {
-        	if (strcmp(listOfUser[j].akun, akunGitHub) == 0) {
-                entry = j;
-                break;
-        	}
-        }
-      	else {
-        	break;
-        }
-    }
+    entry = mymap -> entry++;
+    mymap -> progs[entry].stamp = 1;
+    mymap -> mutexctr++;
+    sem_post(&(mymap -> mutex));
     return entry;
 }
 
@@ -114,13 +103,17 @@ int main(void) {
     	if (!fork()) {
          	execlp(progs[i], NULL);
         }
-        else {
-            wait(NULL);
-        }
     }
-  	int availableEntry;
-  	availableEntry = mymap->entry;
-  	putInfo(akunGitHub, availableEntry);
+	
+	int availableEntry;
+	availableEntry = mymap->entry;
+	for (int i = 0; i < 3; i++) {
+		sleep(DELAY);
+		if (i == 1) {
+			putInfo(akunGitHub, availableEntry);
+		}
+		display(entry);
+	}
     // blah... blah... blah...
     // blah... blah... blah...
     // blah... blah... blah...

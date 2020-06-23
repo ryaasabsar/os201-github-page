@@ -102,10 +102,16 @@ int main(void) {
     myprint(akunGitHub, tmpStr);
     int boss=init();
     checkOpen();
-    sleep (DELAY);
-    int availableEntry;
-  	availableEntry = mymap->entry;
-  	putInfo(akunGitHub, availableEntry);
+    
+	int availableEntry;
+	availableEntry = mymap->entry;
+	for (int i = 0; i < 3; i++) {
+		sleep(DELAY);
+		if (i == 1) {
+			putInfo(akunGitHub, availableEntry);
+		}
+		display(entry);
+	}
     // blah... blah... blah...
     // blah... blah... blah...
     // blah... blah... blah...
