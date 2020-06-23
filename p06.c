@@ -54,7 +54,7 @@ void display(int entry) {
     // display an entry of MMAP.
     // eg. akunGH2[progs[03] TIME[18] MUTEX[05] MMAP[OPEN] [akunGH1][akunGH3][akunGH0][akunGH2]]
     int cntMutex;
-  	cntMutex = mymap->mutexctr;
+  	cntMutex = mymap->mutexctr++;
   	int userStamp;
   	userStamp = mymap->progs[entry].stamp;
   	printf("%s[progs[%02d] TIME[%02d] MUTEX[%02d] MMAP[OPEN] ", akunGitHub, entry, cntMutex, userStamp);
