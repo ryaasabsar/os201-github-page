@@ -112,7 +112,7 @@ int main(void) {
 		if (i == 1) {
 			putInfo(akunGitHub, availableEntry);
 		}
-		display(entry);
+		display(availableEntry);
 	}
     // blah... blah... blah...
     // blah... blah... blah...
