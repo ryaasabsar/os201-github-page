@@ -109,19 +109,25 @@ int main(void) {
 
   	for (int i = 0; i < 6; i++){
     	if (!fork()) {
-         	execl(progs[i], progs[i], NULL);
+         	execlp(progs[i], NULL);
         }
     }
 	
-	int availableEntry;
-	availableEntry = getEntry();
-	for (int j = 0; j < 3; j++) {
-		sleep(DELAY);
-		if (j == 1) {
-			putInfo(akunGitHub, availableEntry);
-		}
-		display(availableEntry);
-	}
+	int entry = getEntry();
+    display(entry);
+
+    sleep(DELAY);
+
+    putInfo(akunGitHub,entry);
+    display(entry);
+
+    sleep(DELAY);
+
+    display(entry);
+
+    for(int x = 0; x < 3; x++){
+        wait(NULL);
+    }
 	
 	mymap -> state = CLOSED;
     // blah... blah... blah...
