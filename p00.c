@@ -18,10 +18,10 @@ int init(void) {
     ftruncate(fd, ssize);
     mymap=mmap(NULL, ssize, MYPROTECTION, MYVISIBILITY, fd, 0);
     close(fd);
-    sem_init(&(mymap->mutex), 0, 1);
   	mymap->entry=0;
   	mymap->mutexctr=0;
   	mymap->state=OPEN;
+	sem_init(&(mymap->mutex), 0, 1);
     return BOSS;
 }
 
@@ -75,9 +75,9 @@ void display(int entry) {
 void putInfo(char* akun, int entry) {
     // put "akunGitHub" into akun[] array (MMAP)
   	sem_wait(&(mymap->mutex));
+	strcpy(mymap->progs[entry].akun, akun);
   	mymap->mutexctr++;
 	mymap->progs[getEntry()].stamp++;
-	memcpy(mymap->progs[entry].akun, akun, sizeof(mymap->progs[entry].akun));
   	/*
 	if (getEntry() == -1) {
         memcpy(mymap->progs[entry].akun, akun, sizeof(mymap->progs[entry].akun));
@@ -115,10 +115,10 @@ int main(void) {
 	
 	int availableEntry;
 	availableEntry = getEntry();
-	for (int i = 0; i < 3; i++) {
+	for (int j = 0; j < 3; i++) {
 		printf("%c", i);
 		sleep(DELAY);
-		if (i == 1) {
+		if (j == 1) {
 			putInfo(akunGitHub, availableEntry);
 		}
 		display(availableEntry);

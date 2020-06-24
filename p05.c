@@ -77,7 +77,7 @@ void putInfo(char* akun, int entry) {
   	sem_wait(&(mymap->mutex));
   	mymap->mutexctr++;
 	mymap->progs[getEntry()].stamp++;
-	memcpy(mymap->progs[entry].akun, akun, sizeof(mymap->progs[entry].akun));
+	strcpy(mymap->progs[entry].akun, akun);
   	/*
 	if (getEntry() == -1) {
         memcpy(mymap->progs[entry].akun, akun, sizeof(mymap->progs[entry].akun));
