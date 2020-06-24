@@ -58,7 +58,7 @@ void display(int entry) {
   	for (int j = 0; j < cntEntry; j++) {
       	printf("[%s]", mymap -> progs[j].akun);
     }
-	printf("]\n")
+	printf("]\n");
 	
 	/*
 	usrinfo listOfUser[MAXPROGS+1];
