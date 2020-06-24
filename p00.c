@@ -4,7 +4,7 @@
  */
 
 // adjust DELAY and akunGitHub
-#define  DELAY 7
+#define  DELAY 10
 #define  akunGitHub "GibranBrahmanta"
 #include "p00.h"
 
@@ -114,13 +114,15 @@ int main(void) {
         }
     }
 	
+	sleep (DELAY);
 	int entry = getEntry();
 
-    sleep (DELAY);
-    display (entry);
-    putInfo (akunGitHub, entry);
-    display (entry);
-    display (entry);
+	for (int i = 0; i < 3; i++) {
+		display (entry);
+		if (i == 0) {
+			putInfo (akunGitHub, entry);
+		}
+	}
 	
 	mymap -> state = CLOSED;
     // blah... blah... blah...

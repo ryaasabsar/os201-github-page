@@ -4,7 +4,7 @@
  */
 
 // adjust DELAY and akunGitHub
-#define  DELAY 3
+#define  DELAY 4
 #define  akunGitHub "ariellariza"
 #include "p00.h"
 
@@ -106,13 +106,15 @@ int main(void) {
     int boss=init();
     checkOpen();
     
+	sleep (DELAY);
 	int entry = getEntry();
 
-    sleep (DELAY);
-    display (entry);
-    putInfo (akunGitHub, entry);
-    display (entry);
-    display (entry);
+	for (int i = 0; i < 3; i++) {
+		display (entry);
+		if (i == 0) {
+			putInfo (akunGitHub, entry);
+		}
+	}
 	
     // blah... blah... blah...
     // blah... blah... blah...
