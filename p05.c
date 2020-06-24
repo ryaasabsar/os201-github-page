@@ -20,10 +20,6 @@ int init(void) {
         exit (0);
     }
     mymap=mmap(NULL, ssize, MYPROTECTION, MYVISIBILITY, fd, 0);
-	if (mymap == MAP_FAILED) {
-        printf("No 'SharedMemoryFile.bin' file.\n");
-        exit(1);
-    }
     close(fd);
     return NOTBOSS;
 }
