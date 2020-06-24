@@ -14,7 +14,7 @@ myshare* mymap;
 int init(void) {
     sleep(DELAY);
     int ssize=sizeof(myshare);
-    int fd   =open(SHAREMEM, MYFLAGS, CHMOD);
+    int fd   =open(SHAREMEM, O_RDWR, CHMOD);
 	if (fd < 0) { 
         printf ("No \"%s\" file.\n", SHAREMEM);
         exit (0);
