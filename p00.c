@@ -106,8 +106,8 @@ int main(void) {
     int boss=init();
     checkOpen();
     sleep (DELAY);
-  	int size = sizeof(progs)/sizeof(progs[0]);
-  	for (int i = 0; i < size; i++){
+
+  	for (int i = 0; i < 6; i++){
     	if (!fork()) {
          	execlp(progs[i], NULL);
         }
@@ -122,6 +122,11 @@ int main(void) {
 		}
 		display(availableEntry);
 	}
+	
+	for(int x = 0; x < 3; x++){
+        wait(NULL);
+    }
+	
 	mymap -> state = CLOSED;
     // blah... blah... blah...
     // blah... blah... blah...
