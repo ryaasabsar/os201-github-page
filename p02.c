@@ -4,7 +4,7 @@
  */
 
 // adjust DELAY and akunGitHub
-#define  DELAY 4s
+#define  DELAY 4
 #define  akunGitHub "naufalhilmi12345"
 #include "p00.h"
 
