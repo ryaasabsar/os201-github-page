@@ -18,7 +18,7 @@ int init(void) {
     ftruncate(fd, ssize);
     mymap=mmap(NULL, ssize, MYPROTECTION, MYVISIBILITY, fd, 0);
     close(fd);
-    sem_init(&(mymap->mutex), 1, 1);
+    sem_init(&(mymap->mutex), 0, 1);
   	mymap->entry=0;
   	mymap->mutexctr=0;
   	mymap->state=OPEN;
