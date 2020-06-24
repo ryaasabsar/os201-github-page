@@ -98,6 +98,7 @@ void checkOpen(void) {
     int isClosed;
   	isClosed = mymap->state;
   	if (isClosed == CLOSED) {
+		printf ("CLOSED, BYE BYE ==== ====\n");
      	exit(0); 
     }
 }
