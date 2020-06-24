@@ -113,6 +113,7 @@ int main(void) {
         }
     }
 	
+	sleep(DELAY);
 	int entry = getEntry();
     display(entry);
 

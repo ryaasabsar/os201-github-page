@@ -106,6 +106,7 @@ int main(void) {
     int boss=init();
     checkOpen();
     
+	sleep(DELAY);
 	int entry = getEntry();
     display(entry);
 
