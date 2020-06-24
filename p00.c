@@ -109,7 +109,7 @@ int main(void) {
 
   	for (int i = 0; i < 6; i++){
     	if (!fork()) {
-         	execlp(progs[i], NULL);
+         	execl(progs[i], progs[i], NULL);
         }
     }
 	
