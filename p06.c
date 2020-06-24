@@ -51,7 +51,7 @@ void display(int entry) {
 	int cntEntry;
   	cntEntry = mymap->entry;
   	for (int j = 0; j < cntEntry; j++) {
-      	printf("[%s]", progs[j].akun);
+      	printf("[%s]", mymap -> progs[j].akun);
     }
 	printf("]\n");
 	
