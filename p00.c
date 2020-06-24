@@ -116,7 +116,6 @@ int main(void) {
 	int availableEntry;
 	availableEntry = getEntry();
 	for (int j = 0; j < 3; j++) {
-		printf("%c", i);
 		sleep(DELAY);
 		if (j == 1) {
 			putInfo(akunGitHub, availableEntry);
