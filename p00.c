@@ -116,16 +116,13 @@ int main(void) {
 	int availableEntry;
 	availableEntry = getEntry();
 	for (int i = 0; i < 3; i++) {
+		printf(i);
 		sleep(DELAY);
 		if (i == 1) {
 			putInfo(akunGitHub, availableEntry);
 		}
 		display(availableEntry);
 	}
-	
-	for(int x = 0; x < 3; x++){
-        wait(NULL);
-    }
 	
 	mymap -> state = CLOSED;
     // blah... blah... blah...
