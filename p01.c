@@ -106,15 +106,17 @@ int main(void) {
     int boss=init();
     checkOpen();
     
-	int availableEntry;
-	availableEntry = getEntry();
-	for (int i = 0; i < 3; i++) {
-		sleep(DELAY);
-		if (i == 1) {
-			putInfo(akunGitHub, availableEntry);
-		}
-		display(availableEntry);
-	}
+	int entry = getEntry();
+    display(entry);
+
+    sleep(DELAY);
+
+    putInfo(akunGitHub,entry);
+    display(entry);
+
+    sleep(DELAY);
+
+    display(entry);
 	
     // blah... blah... blah...
     // blah... blah... blah...

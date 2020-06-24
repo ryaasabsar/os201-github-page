@@ -124,10 +124,6 @@ int main(void) {
     sleep(DELAY);
 
     display(entry);
-
-    for(int x = 0; x < 3; x++){
-        wait(NULL);
-    }
 	
 	mymap -> state = CLOSED;
     // blah... blah... blah...
