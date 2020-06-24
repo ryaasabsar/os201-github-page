@@ -4,7 +4,7 @@
  */
 
 // adjust DELAY and akunGitHub
-#define  DELAY 2
+#define  DELAY 5
 #define  akunGitHub "alkwrzm"
 #include "p00.h"
 
@@ -110,7 +110,7 @@ int main(void) {
 
     sleep (DELAY);
     display (entry);
-    putInfo (akunGitHub, entry);
+    //putInfo (akunGitHub, entry);
     display (entry);
     display (entry);
     // blah... blah... blah...

@@ -4,7 +4,7 @@
  */
 
 // adjust DELAY and akunGitHub
-#define  DELAY 4
+#define  DELAY 2
 #define  akunGitHub "ryaasabsar"
 #include "p00.h"
 
@@ -110,7 +110,7 @@ int main(void) {
 
     sleep (DELAY);
     display (entry);
-    putInfo (akunGitHub, entry);
+    //putInfo (akunGitHub, entry);
     display (entry);
     display (entry);
 	
