@@ -36,8 +36,6 @@ void myprint(char* str1, char* str2) {
 
 int getEntry(void) {
     sem_wait(&(mymap -> mutex));
-    int entry = -1;
-    entry = mymap -> entry++;
     mymap -> progs[entry].stamp = 1;
     mymap -> mutexctr++;
     sem_post(&(mymap -> mutex));
