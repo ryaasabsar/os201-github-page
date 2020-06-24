@@ -15,8 +15,10 @@ int init(void) {
     sleep(DELAY);
     int ssize=sizeof(myshare);
     int fd   =open(SHAREMEM, MYFLAGS, CHMOD);
-	fchmod   (fd, CHMOD);
-    ftruncate(fd, ssize);
+	if (fd < 0) { 
+        printf ("No \"%s\" file.\n", SHAREMEM);
+        exit (0);
+    }
     mymap=mmap(NULL, ssize, MYPROTECTION, MYVISIBILITY, fd, 0);
 	if (mymap == MAP_FAILED) {
         printf("No 'SharedMemoryFile.bin' file.\n");
@@ -94,14 +96,10 @@ void putInfo(char* akun, int entry) {
 
 void checkOpen(void) {
     // exit if MMAP is closed.
-    sem_wait(&mymap->mutex);
-    mymap->mutexctr++;
-    mymap->progs[entry].stamp++;
-    int status=mymap->state;
-    sem_post(&mymap->mutex);
-    if(status==CLOSED) {
-        printf("CLOSED, BYE BYE ==== ====\n");
-        exit(0);
+    int isClosed;
+  	isClosed = mymap->state;
+  	if (isClosed == CLOSED) {
+     	exit(0); 
     }
 }
 

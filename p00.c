@@ -94,14 +94,10 @@ void putInfo(char* akun, int entry) {
 
 void checkOpen(void) {
     // exit if MMAP is closed.
-  	sem_wait(&mymap->mutex);
-    mymap->mutexctr++;
-    mymap->progs[entry].stamp++;
-    int status=mymap->state;
-    sem_post(&mymap->mutex);
-    if(status==CLOSED) {
-        printf("CLOSED, BYE BYE ==== ====\n");
-        exit(0);
+  	int isClosed;
+  	isClosed = mymap->state;
+  	if (isClosed == CLOSED) {
+     	exit(0); 
     }
 }
 
