@@ -15,9 +15,14 @@ int init(void) {
     sleep(DELAY);
     int ssize=sizeof(myshare);
     int fd   =open(SHAREMEM, MYFLAGS, CHMOD);
+	fchmod   (fd, CHMOD);
+    ftruncate(fd, ssize);
     mymap=mmap(NULL, ssize, MYPROTECTION, MYVISIBILITY, fd, 0);
+	if (mymap == MAP_FAILED) {
+        printf("No 'SharedMemoryFile.bin' file.\n");
+        exit(1);
+    }
     close(fd);
-    // blah blah blah
     return NOTBOSS;
 }
 
