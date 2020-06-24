@@ -93,7 +93,7 @@ int main(void) {
     checkOpen();
     
 	int availableEntry;
-	availableEntry = mymap->entry;
+	availableEntry = getEntry();
 	for (int i = 0; i < 3; i++) {
 		sleep(DELAY);
 		if (i == 1) {
