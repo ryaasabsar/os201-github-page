@@ -22,7 +22,6 @@ int init(void) {
   	mymap->entry=0;
   	mymap->mutexctr=0;
   	mymap->state=OPEN;
-    //  more INIT STUFFs...
     return BOSS;
 }
 
@@ -39,8 +38,8 @@ int getEntry(void) {
     sem_wait(&(mymap -> mutex));
     int entry = 0;
     entry = mymap -> entry++;
+	mymap -> mutexctr++;
     mymap -> progs[entry].stamp = 1;
-    mymap -> mutexctr++;
     sem_post(&(mymap -> mutex));
     return entry;
 }
@@ -53,7 +52,16 @@ void display(int entry) {
   	int userStamp;
   	userStamp = mymap->progs[entry].stamp++;
   	printf("%s[progs[%02d] TIME[%02d] MUTEX[%02d] MMAP[OPEN] ", akunGitHub, entry, cntMutex, userStamp);
-  	usrinfo listOfUser[MAXPROGS+1];
+  	
+	int cntEntry;
+  	cntEntry = mymap->entry;
+  	for (int j = 0; j < cntEntry; j++) {
+      	printf("[%s]", progs[j].akun);
+    }
+	printf("]\n");
+	
+	/*
+	usrinfo listOfUser[MAXPROGS+1];
     memcpy(listOfUser, mymap->progs, sizeof(listOfUser));
   	int cntEntry;
   	cntEntry = mymap->entry;
@@ -61,6 +69,7 @@ void display(int entry) {
       	printf("[%s]", listOfUser[j].akun);
     }
   	printf("]\n");
+	*/
 }
 
 void putInfo(char* akun, int entry) {
