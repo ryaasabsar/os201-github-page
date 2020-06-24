@@ -37,7 +37,7 @@ void myprint(char* str1, char* str2) {
 
 int getEntry(void) {
     sem_wait(&(mymap -> mutex));
-    int entry = -1;
+    int entry = 0;
     entry = mymap -> entry++;
     mymap -> progs[entry].stamp = 1;
     mymap -> mutexctr++;
@@ -72,7 +72,10 @@ void putInfo(char* akun, int entry) {
     // put "akunGitHub" into akun[] array (MMAP)
   	sem_wait(&(mymap->mutex));
   	mymap->mutexctr++;
-  	if (getEntry() == -1) {
+	mymap->progs[getEntry()].stamp++;
+	memcpy(mymap->progs[entry].akun, akun, sizeof(mymap->progs[entry].akun));
+  	/*
+	if (getEntry() == -1) {
         memcpy(mymap->progs[entry].akun, akun, sizeof(mymap->progs[entry].akun));
         mymap->progs[entry].stamp = 0;
         mymap->entry++;
@@ -80,6 +83,7 @@ void putInfo(char* akun, int entry) {
   	else {
       	mymap->progs[getEntry()].stamp++;
     }
+	*/
   	sem_post(&(mymap->mutex));
 }
 
